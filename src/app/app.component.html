@@ -1,34 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <form [formGroup]="formCom" (ngSubmit)="addCom()">
+            <form [formGroup]="formCommment" (ngSubmit)="add()">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name" formControlName="name">
-                    <div class="invalid-feedback" *ngIf="formCom.get('name').errors?.required">
-                        Name is required
-                    </div>
+                    
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Email" formControlName="email"
-                        [ngClass]="{'is-invalid': formCom.controls.email.errors && (formCom.controls.email.dirty || formCom.controls.email.touched)}">
-                    <div class="invalid-feedback" *ngIf="formCom.get('email').errors?.required">
-                        Email is required
+                        [ngClass]="{'is-invalid': formCommment.controls.email.errors && (formCommment.controls.email.dirty || formCommment.controls.email.touched)}">
+                    <div class="invalid-feedback" *ngIf="formCommment.get('email').errors?.required">
                     </div>
-                    <div class="invalid-feedback" *ngIf="formCom.get('email').errors?.email">
-                        Invalid format email
-                    </div>
+                    
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" rows="3" placeholder="Comment" formControlName="comment"
-                        [ngClass]="{'is-invalid': formCom.controls.comment.errors && (formCom.controls.comment.dirty || formCom.controls.comment.touched)}"></textarea>
-                    <div class="invalid-feedback" *ngIf="formCom.get('comment').errors?.required">
-                        Comment is required
-                    </div>
-                    <div class="invalid-feedback" *ngIf="formCom.get('comment').errors?.maxlength">
-                        The maximum comment length is 150 characters
-                    </div>
+                    <textarea class="form-control" rows="3" placeholder="Comment" formControlName="comment"></textarea>
+                        
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!formCom.valid">Add</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!formCommment.valid">Add comment</button>
             </form>
         </div>
         <div class="col-md-6 offset-md-1">
@@ -39,7 +28,7 @@
                     <h6>{{comment.email}}</h6>
                     {{comment.comment}}
                     <div>
-                        <button type="button" class="btn btn-primary btn-sm" (click)="deleteCom(i)">Delete comment</button>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="delete(i)">Delete comment</button>
                     </div>
                 </div>
             </div>

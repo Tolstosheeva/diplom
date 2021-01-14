@@ -13,19 +13,19 @@ export class DataService {
 
   comments: Comment [] = [];
 
-  getCom() {
+  getComment() {
     return this.comments;
   }
 
-  addCom(com: any) {
+  add(commment:any) {
     this.comments.push({
-      name: com.name,
-      email: com.email,
-      comment: com.comment
+      name: commment.name,
+      email: commment.email,
+      comment: commment.comment
     });
   }
 
-  deleteCom(i: number) {
+  delete(i: number) {
     this.comments.splice(i, 1);
   }
 }

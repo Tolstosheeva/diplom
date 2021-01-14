@@ -10,13 +10,11 @@ import { Comment } from './shared/models/comment.model';
 })
 export class AppComponent {
   comments!: Comment[];
-  formCom!: FormGroup;
+  formCommment!: FormGroup;
 
 
-
-  // tslint:disable-next-line: typedef
   get form() {
-    return this.formCom.controls;
+    return this.formCommment.controls;
   }
 
   constructor(
@@ -24,31 +22,28 @@ export class AppComponent {
     private dataService: DataService
   ) {}
 
-  // tslint:disable-next-line: use-lifecycle-interface
+  
   ngOnInit(): void {
-    this.formCom = this.fb.group({
+    this.formCommment = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       comment: ['', [Validators.required, Validators.maxLength(150)]]
     });
-    this.comments = this.dataService.getCom();
+    this.comments = this.dataService.getComment();
   }
 
-  
 
-  // tslint:disable-next-line: typedef
-  addCom() {
-    console.log(this.formCom.value);
-    this.dataService.addCom(this.formCom.value);
-    this.formCom.reset({
+  add() {
+    console.log(this.formCommment.value);
+    this.dataService.add(this.formCommment.value);
+    this.formCommment.reset({
       name: '',
       email: '',
-      comment: ''
+      comments: ''
     })
   }
 
-  // tslint:disable-next-line: typedef
-  deleteCom(i: number) {
-    this.dataService.deleteCom(i);
+  delete(i: number) {
+    this.dataService.delete(i);
   }
 }
