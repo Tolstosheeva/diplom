@@ -5,9 +5,8 @@ import { Comment } from './models/comment.model';
   providedIn: 'root'
 })
 export class DataService {
-  addComment(value: any) {
-    throw new Error('Method not implemented.');
-  }
+  
+  
 
   constructor() { }
 
